@@ -37,6 +37,7 @@ export const Home: FC = memo(() => {
                 {
                   label: "1",
                   data: [5, 6, 7],
+                  borderColor: "rgb(255, 99, 132)",
                 },
               ],
             }}
