@@ -11,6 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import { useWallet } from "../hooks/useWallet";
 
 Chart.register(
   CategoryScale,
@@ -23,25 +24,27 @@ Chart.register(
 );
 
 export const Home: FC = memo(() => {
+  const { isConnected } = useWallet();
   return (
     <Flex align="center" justify="center" height="100vh">
       <Box w="sm">
         <Stack>
-          <Heading textAlign="center">home</Heading>
-          <Line
-            height="100%"
-            width="100%"
-            data={{
-              labels: ["Jun", "Jul", "Aug"],
-              datasets: [
-                {
-                  label: "1",
-                  data: [5, 6, 7],
-                  borderColor: "rgb(255, 99, 132)",
-                },
-              ],
-            }}
-          />
+          {isConnected && (
+            <Line
+              height="100%"
+              width="100%"
+              data={{
+                labels: ["Jun", "Jul", "Aug"],
+                datasets: [
+                  {
+                    label: "1",
+                    data: [5, 6, 7],
+                    borderColor: "rgb(255, 99, 132)",
+                  },
+                ],
+              }}
+            />
+          )}
         </Stack>
       </Box>
     </Flex>
